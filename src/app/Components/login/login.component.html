@@ -1,0 +1,47 @@
+<div class="outer">
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+        <div class="panel border bg-white">
+          <div class="panel-heading">
+            <h3 class="pt-3font-weight-bold">Login 🔐</h3>
+          </div>
+          <div class="panel-body p-3">
+            <form [formGroup]="loginForm">
+              <div class="form-group pt-3">
+                <div class="input-feild">
+                  <span class="fa fa-user p-2"></span>
+                  <input type="text" formControlName="username" placeholder="Username" />
+                </div>
+                <!-- // <small *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username)" class="text-danger" >* Username is required !</small> -->
+                <div class="input-feild">
+                  <span class="fa fa-lock p-2"></span>
+                  <input [type]="type" formControlName="password"  placeholder="Password" />
+                  <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                </div>
+                <!-- <small class="text-danger">* Password is required !</small> -->
+                <div class="form-inline fr mt-4">
+                  <a href="" id="forget" class="font-weight-bold">Forget Password ?</a>
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-block mt-4 w-100">
+                  Submit
+                </button>
+                <div class="text-center pt-4 text-muted">Don't have account ? <a href="" id="forget" routerLink="/signup">Signup</a></div>
+              </div>
+            </form>
+            <!-- <div class="mx-3 my-2 py-2 bordert">
+                <div class="text-center py-3">
+                    <a href="https://www.facebook.com" target="_blank" class="px-2" <img src="https://www.dpreview.com/files/p/articles/4698742202/facebook.jpeg" alt="" > </a>
+                </div> 
+                <div>
+                    <a href="https://www.google.com" ><img src="./../../Images/google.png"></a>
+                </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
