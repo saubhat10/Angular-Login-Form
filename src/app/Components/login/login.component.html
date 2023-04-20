@@ -9,24 +9,23 @@
           <div class="panel-body p-3">
             <form [formGroup]="loginForm">
               <div class="form-group pt-3">
-                <div class="input-feild">
+                <div class="input-feild" [class.error]="loginForm.controls['username'].dirty && loginForm.hasError('required','username')" >
                   <span class="fa fa-user p-2"></span>
                   <input type="text" formControlName="username" placeholder="Username" />
                 </div>
-                <!-- // <small *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username)" class="text-danger" >* Username is required !</small> -->
-                <div class="input-feild">
+                
+                <small *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')" class="text-danger"> * Username is required ! </small>
+                <div class="input-feild" [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">
                   <span class="fa fa-lock p-2"></span>
                   <input [type]="type" formControlName="password"  placeholder="Password" />
                   <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
                 </div>
-                <!-- <small class="text-danger">* Password is required !</small> -->
+                 <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')" class="text-danger">* Password is required !</small> 
                 <div class="form-inline fr mt-4">
                   <a href="" id="forget" class="font-weight-bold">Forget Password ?</a>
                 </div>
-                <button
-                  type="submit"
-                  class="btn btn-primary btn-block mt-4 w-100">
-                  Submit
+                <button (click)="onSubmit()" type="submit" class="btn btn-primary btn-block mt-4 w-100">
+                  Login
                 </button>
                 <div class="text-center pt-4 text-muted">Don't have account ? <a href="" id="forget" routerLink="/signup">Signup</a></div>
               </div>

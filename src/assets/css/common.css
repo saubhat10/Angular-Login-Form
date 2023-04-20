@@ -1,7 +1,7 @@
 .outer{
-    height: 100vh;
-    background: linear-gradient(to top, #30cfd0 0%, #330867 100%) no-repeat ;
-    
+    /* height: 10vh ; */
+    /* background: linear-gradient(to top, #30cfd0 0%, #330867 100%)  ; */
+    background: linear-gradient(to top, #ccff 50%, #6e6ef6 90%) no-repeat;
 }
 .panel-heading{
     text-align: center;
@@ -45,7 +45,7 @@ a:hover{
     cursor: pointer;
     border: 1px solid #ddd;
     color: #4343ff;
-    margin: 10px;
+     margin: 5px;
 }
 
 .input-feild.error{
