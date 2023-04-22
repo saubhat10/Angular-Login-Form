@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl , FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Services/auth.service';
 import ValidateForm from 'src/app/helper/validateform';
 
 @Component({
@@ -9,11 +11,11 @@ import ValidateForm from 'src/app/helper/validateform';
 })
 export class SignupComponent implements OnInit {
  // [x: string]: any;
-  type: string = 'password';
+  type: string ='password';
   isText: boolean = false;
-  eyeIcon: string = 'fa fa-eye-slash';
+  eyeIcon: string ='fa fa-eye-slash';
   signUpForm! : FormGroup;  
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private auth:AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.signUpForm = this.fb.group({
@@ -27,10 +29,26 @@ export class SignupComponent implements OnInit {
   hideShowPass() {
     this.isText = !this.isText;
     this.isText ? (this.eyeIcon = 'fa-eye') : (this.eyeIcon = 'fa-eye-slash');
-    this.isText ? (this.type = 'text') : (this.type = 'password');
+    this.isText ? (this.type = 'text') : (this.type ='password');
   }
 onSignup(){
   if(this.signUpForm.valid){
+    // 
+    //Perform Logic for Signup
+    this.auth.signup(this.signUpForm.value)
+    .subscribe({
+      next:(res=>{
+        alert(res.message);
+        this.signUpForm.reset();
+        this.router.navigate(['login']);
+      }),
+      error:(err=>{
+        alert(err?.error.message)
+      })
+    })
+
+
+
     console.log(this.signUpForm.value)
   }else{
     ValidateForm.validateAllFormsFeilds(this.signUpForm);
